@@ -4,13 +4,12 @@ import { buildSalesOrderHeadersUrl } from '../src/d365fo.js';
 
 test('buildSalesOrderHeadersUrl requests top 5 SalesOrderHeadersV2 entries', () => {
   const url = buildSalesOrderHeadersUrl('https://contoso.operations.dynamics.com/', 'usmf');
-  const decoded = decodeURIComponent(url);
   const parsed = new URL(url);
+  const decodedPath = decodeURIComponent(`${parsed.pathname}?${parsed.searchParams.toString()}`);
 
-  assert.match(decoded, /\/data\/SalesOrderHeadersV2\?/);
-  assert.match(decoded, /\$top=5/);
-  assert.match(decoded, /cross-company=true/);
-  assert.match(decoded, /dataAreaId\+eq\+'usmf'/);
+  assert.match(decodedPath, /\/data\/SalesOrderHeadersV2\?/);
+  assert.equal(parsed.searchParams.get('$top'), '5');
+  assert.equal(parsed.searchParams.get('cross-company'), 'true');
   assert.equal(decodeURIComponent(parsed.searchParams.get('$filter')), "dataAreaId eq 'usmf'");
 });
 

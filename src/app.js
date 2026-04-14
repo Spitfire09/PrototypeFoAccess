@@ -64,6 +64,7 @@ form.addEventListener('submit', async (event) => {
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./service-worker.js').catch((error) => {
-    setStatus(`Service worker registration failed: ${error.message}`, true);
+    console.error('Service worker registration failed.', error);
+    setStatus('Offline mode could not be enabled.', true);
   });
 }

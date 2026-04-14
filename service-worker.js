@@ -36,8 +36,9 @@ self.addEventListener('fetch', (event) => {
 
       try {
         const networkResponse = await fetch(event.request);
+        const requestOrigin = new URL(event.request.url).origin;
 
-        if (networkResponse.ok && event.request.url.startsWith(self.location.origin)) {
+        if (networkResponse.ok && requestOrigin === self.location.origin) {
           const cache = await caches.open(CACHE_NAME);
           cache.put(event.request, networkResponse.clone());
         }
