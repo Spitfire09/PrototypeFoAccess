@@ -1,0 +1,15 @@
+{
+  "name": "prototype-fo-access",
+  "version": "1.0.0",
+  "description": "Prototype for Business Central sales order access via OData API",
+  "type": "module",
+  "scripts": {
+    "start": "vite --port 4173",
+    "build": "vite build",
+    "preview": "vite preview --port 4173",
+    "test": "node --test test/*.test.js"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}
