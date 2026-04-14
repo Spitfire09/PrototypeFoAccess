@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PrototypeFoAccess – Business Central Sales Orders</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Business Central – Sales Orders</h1>
+
+      <section class="config-section">
+        <h2>Konfiguration</h2>
+
+        <div class="form-group">
+          <label for="baseUrl">Base URL</label>
+          <input
+            type="text"
+            id="baseUrl"
+            placeholder="https://api.businesscentral.dynamics.com/v2.0/{tenant}/production"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="company">Company ID (GUID)</label>
+          <input
+            type="text"
+            id="company"
+            placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="bearerToken">Bearer Token</label>
+          <textarea
+            id="bearerToken"
+            rows="3"
+            placeholder="Indsæt dit bearer token her..."
+          ></textarea>
+        </div>
+
+        <button id="loadBtn" class="btn-primary">Load top 5 headers</button>
+      </section>
+
+      <section class="results-section">
+        <h2>Resultater</h2>
+        <div id="statusMessage" class="status-message" hidden></div>
+        <div id="results" class="results-table-wrapper" hidden></div>
+      </section>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
