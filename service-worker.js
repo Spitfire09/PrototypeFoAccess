@@ -28,12 +28,31 @@ self.addEventListener('fetch', (event) => {
   }
 
   event.respondWith(
-    caches.match(event.request).then((cached) => {
+    (async () => {
+      const cached = await caches.match(event.request);
       if (cached) {
         return cached;
       }
 
-      return fetch(event.request);
-    })
+      try {
+        const networkResponse = await fetch(event.request);
+
+        if (networkResponse.ok && event.request.url.startsWith(self.location.origin)) {
+          const cache = await caches.open(CACHE_NAME);
+          cache.put(event.request, networkResponse.clone());
+        }
+
+        return networkResponse;
+      } catch (error) {
+        if (event.request.mode === 'navigate') {
+          const fallback = await caches.match('./index.html');
+          if (fallback) {
+            return fallback;
+          }
+        }
+
+        throw error;
+      }
+    })()
   );
 });

@@ -14,21 +14,31 @@ function renderRows(rows) {
 
   if (!rows.length) {
     const row = document.createElement('tr');
-    row.innerHTML = '<td colspan="6">No sales orders found.</td>';
+    const cell = document.createElement('td');
+    cell.colSpan = 6;
+    cell.textContent = 'No sales orders found.';
+    row.appendChild(cell);
     resultBody.appendChild(row);
     return;
   }
 
   for (const item of rows) {
     const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${item.SalesOrderNumber ?? ''}</td>
-      <td>${item.SalesOrderName ?? ''}</td>
-      <td>${item.OrderingCustomerAccountNumber ?? ''}</td>
-      <td>${item.InvoiceCustomerAccountNumber ?? ''}</td>
-      <td>${item.RequestedShippingDate ?? ''}</td>
-      <td>${item.dataAreaId ?? ''}</td>
-    `;
+    const cells = [
+      item.SalesOrderNumber,
+      item.SalesOrderName,
+      item.OrderingCustomerAccountNumber,
+      item.InvoiceCustomerAccountNumber,
+      item.RequestedShippingDate,
+      item.dataAreaId
+    ];
+
+    for (const value of cells) {
+      const cell = document.createElement('td');
+      cell.textContent = value ?? '';
+      row.appendChild(cell);
+    }
+
     resultBody.appendChild(row);
   }
 }

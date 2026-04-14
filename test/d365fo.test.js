@@ -5,11 +5,13 @@ import { buildSalesOrderHeadersUrl } from '../src/d365fo.js';
 test('buildSalesOrderHeadersUrl requests top 5 SalesOrderHeadersV2 entries', () => {
   const url = buildSalesOrderHeadersUrl('https://contoso.operations.dynamics.com/', 'usmf');
   const decoded = decodeURIComponent(url);
+  const parsed = new URL(url);
 
   assert.match(decoded, /\/data\/SalesOrderHeadersV2\?/);
   assert.match(decoded, /\$top=5/);
   assert.match(decoded, /cross-company=true/);
   assert.match(decoded, /dataAreaId\+eq\+'usmf'/);
+  assert.equal(decodeURIComponent(parsed.searchParams.get('$filter')), "dataAreaId eq 'usmf'");
 });
 
 test('buildSalesOrderHeadersUrl escapes single quotes in company value', () => {
