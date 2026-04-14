@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a4a7a" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='14' fill='%230a4a7a'/%3E%3Ctext x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-size='64' fill='white'%3ESO%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>D365FO Sales Orders</title>
+  </head>
+  <body>
+    <main>
+      <h1>D365FO Sales Orders</h1>
+      <p>Fetches the top 5 sales order headers from D365FO.</p>
+
+      <form id="sales-order-form">
+        <label>
+          D365FO Base URL
+          <input name="baseUrl" type="url" placeholder="https://your-tenant.operations.dynamics.com" required />
+        </label>
+
+        <label>
+          Company (dataAreaId)
+          <input name="company" type="text" placeholder="usmf" required />
+        </label>
+
+        <label>
+          Bearer Token
+          <textarea name="token" rows="2" placeholder="Paste OAuth token"></textarea>
+        </label>
+
+        <button type="submit">Load top 5 headers</button>
+      </form>
+
+      <p id="status-text" aria-live="polite">Ready.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Sales order</th>
+            <th>Name</th>
+            <th>Ordering account</th>
+            <th>Invoice account</th>
+            <th>Requested ship date</th>
+            <th>Company</th>
+          </tr>
+        </thead>
+        <tbody id="sales-orders-body"></tbody>
+      </table>
+    </main>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
