@@ -1,22 +1,15 @@
 {
-  "name": "prototypefoaccess",
+  "name": "prototype-fo-access",
   "version": "1.0.0",
   "description": "PWA-ready app that reads top 5 D365FO sales order headers",
-  "main": "index.js",
-  "scripts": {
-    "test": "node --test",
-    "start": "python3 -m http.server 4173"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Spitfire09/PrototypeFoAccess.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "type": "module",
-  "bugs": {
-    "url": "https://github.com/Spitfire09/PrototypeFoAccess/issues"
+  "scripts": {
+    "start": "vite --port 4173",
+    "build": "vite build",
+    "preview": "vite preview --port 4173",
+    "test": "node --test"
   },
-  "homepage": "https://github.com/Spitfire09/PrototypeFoAccess#readme"
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
 }
