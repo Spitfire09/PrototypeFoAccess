@@ -1,0 +1,70 @@
+:root {
+  color-scheme: light;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f2f4f8;
+  color: #1b1b1b;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+h1 {
+  margin-bottom: 0.25rem;
+}
+
+form {
+  display: grid;
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+  font-weight: 600;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+  padding: 0.6rem;
+  border: 1px solid #aab0ba;
+  border-radius: 6px;
+}
+
+button {
+  width: fit-content;
+  background: #0a4a7a;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#status-text {
+  margin: 0.75rem 0;
+}
+
+#status-text.error {
+  color: #af0f1f;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+th,
+td {
+  border: 1px solid #d7dbe2;
+  padding: 0.5rem;
+  text-align: left;
+}

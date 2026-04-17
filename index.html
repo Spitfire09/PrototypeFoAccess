@@ -1,55 +1,55 @@
-<!DOCTYPE html>
-<html lang="da">
+<!doctype html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PrototypeFoAccess – Business Central Sales Orders</title>
-    <link rel="stylesheet" href="/src/style.css" />
+    <meta name="theme-color" content="#0a4a7a" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='14' fill='%230a4a7a'/%3E%3Ctext x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-size='64' fill='white'%3ESO%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>D365FO Sales Orders</title>
   </head>
   <body>
-    <div class="container">
-      <h1>Business Central – Sales Orders</h1>
+    <main>
+      <h1>D365FO Sales Orders</h1>
+      <p>Fetches the top 5 sales order headers from D365FO.</p>
 
-      <section class="config-section">
-        <h2>Konfiguration</h2>
+      <form id="sales-order-form">
+        <label>
+          D365FO Base URL
+          <input name="baseUrl" type="url" placeholder="https://your-tenant.operations.dynamics.com" required />
+        </label>
 
-        <div class="form-group">
-          <label for="baseUrl">Base URL</label>
-          <input
-            type="text"
-            id="baseUrl"
-            placeholder="https://api.businesscentral.dynamics.com/v2.0/{tenant}/production"
-          />
-        </div>
+        <label>
+          Company (dataAreaId)
+          <input name="company" type="text" placeholder="usmf" required />
+        </label>
 
-        <div class="form-group">
-          <label for="company">Company ID (GUID)</label>
-          <input
-            type="text"
-            id="company"
-            placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-          />
-        </div>
+        <label>
+          Bearer Token
+          <textarea name="token" rows="2" placeholder="Paste OAuth token"></textarea>
+        </label>
 
-        <div class="form-group">
-          <label for="bearerToken">Bearer Token</label>
-          <textarea
-            id="bearerToken"
-            rows="3"
-            placeholder="Indsæt dit bearer token her..."
-          ></textarea>
-        </div>
+        <button type="submit">Load top 5 headers</button>
+      </form>
 
-        <button id="loadBtn" class="btn-primary">Load top 5 headers</button>
-      </section>
+      <p id="status-text" aria-live="polite">Ready.</p>
 
-      <section class="results-section">
-        <h2>Resultater</h2>
-        <div id="statusMessage" class="status-message" hidden></div>
-        <div id="results" class="results-table-wrapper" hidden></div>
-      </section>
-    </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Sales order</th>
+            <th>Name</th>
+            <th>Ordering account</th>
+            <th>Invoice account</th>
+            <th>Requested ship date</th>
+            <th>Company</th>
+          </tr>
+        </thead>
+        <tbody id="sales-orders-body"></tbody>
+      </table>
+    </main>
 
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="./src/app.js"></script>
   </body>
 </html>

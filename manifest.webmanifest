@@ -1,0 +1,16 @@
+{
+  "name": "D365FO Sales Orders",
+  "short_name": "D365FO SO",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f2f4f8",
+  "theme_color": "#0a4a7a",
+  "description": "Reads top 5 sales order headers from D365FO",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='14' fill='%230a4a7a'/%3E%3Ctext x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-size='64' fill='white'%3ESO%3C/text%3E%3C/svg%3E",
+      "sizes": "128x128",
+      "type": "image/svg+xml"
+    }
+  ]
+}

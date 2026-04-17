@@ -1,13 +1,13 @@
 {
   "name": "prototype-fo-access",
   "version": "1.0.0",
-  "description": "Prototype for Business Central sales order access via OData API",
+  "description": "PWA-ready app that reads top 5 D365FO sales order headers",
   "type": "module",
   "scripts": {
     "start": "vite --port 4173",
     "build": "vite build",
     "preview": "vite preview --port 4173",
-    "test": "node --test test/*.test.js"
+    "test": "node --test"
   },
   "devDependencies": {
     "vite": "^5.4.0"
